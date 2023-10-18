@@ -1,183 +1,174 @@
-/* Base styles for larger screens */
+/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-.container {
-    position: relative;
-    width: 100vw;
+    font-family:'Poppins',sans-serif;
+  }
+  body{
+    justify-content: flex-end;
+    align-items: flex-start;
+    height:100vh;
+  }
+  .login{
+    justify-content: center;
+    align-items: center;
+    margin-right:50px;
+    border-radius: 50%;
+    background-color: blue;
+    
+  }
+  
+  .container {
+    width:100%;
     min-height: 100vh;
-    padding: 1px;
-    background: linear-gradient(135deg, #00feba, #5b548a);
-}
-
-.quotes {
-    margin-top: 40px;
-    margin-bottom: 25px;
-    width: 100%;
-    position: relative;
-    display: flex;
+    background-color: linear-gradient(135deg,#153677,#4e085f);
+    padding:10px;
+  }
+  h2{
     justify-content: center;
     align-items: center;
-    object-fit: fill;
-    image-rendering: optimizeQuality;
-}
+  }
 
-#transitionImage {
-    position: relative;
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity 2s ease, transform 2s ease;
-}
 
-#transitionImage.animate {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.to-do-app {
-    border: black solid 5px;
-    width: 100%;
-    max-width: 950px;
-    margin-left: 85px;
-    height: auto;
-    background-color: #fff; /* Change the background color for better visibility */
-    margin: 100px auto 5%;
-    padding: 100px 30px 70px;
+  
+  .to-do-app {
+    width:100%;
+    max-width: 540px;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
     border-radius: 20px;
-}
-
-.to-do-app h2 {
-    font-size: 65px;
-    font-weight: bolder;
+    background-color: #fff;
+  }
+  
+  .to-do-app h2 {
+    display: flex;  
     font-style: italic;
-    font-family: sans-serif;
     color: hsl(220, 43%, 3%);
-    justify-content: center;
-    align-items: center;
-    display: flex;
     margin-bottom: 20px;
-    text-decoration: underline #ff3352;
-}
+    align-items: center;
+    text-align: center; /* Center the text */
+  }
+  .to-do-app h2 img{
+    width:30px;
+    margin-left:10px;
 
-.row {
+  }
+  
+  .row {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    border-radius: 50px;
-    display: flex;
-    padding-left: 30px;
-    margin-bottom: 20px;
-}
-
-#input-box {
-    width: 80%;
-    border-radius: 25px;
-    padding: 5px 10px;
-    outline: none;
-    font-size: 25px;
-    font-weight: 500;
-}
-
-#btn btn-success {
+    background: white;
+    border-radius: 30px;
+    padding-left:20px;
+    margin-bottom: 25px;
+     
+    
+  }
+  input{
+    flex:1;
+    border: 1px solid gray;
+    outline:none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+  }
+  button{
+    border:1px solid gainsboro;
+    border-radius: 40%;
+    outline:none;
+    padding:16px 50px; 
+    background:green ;
+    color:#fff;
+    font-size:16px;
     cursor: pointer;
-}
-
-ul li {
-    list-style: none;
+    border-radius:40px;
+    height:50px;
+  }
+  
+ul li{
+    list-style:none;
     font-size: 25px;
-    font-weight: 600;
-    padding: 12px 50px 12px 50px;
-    user-select: none;
+    font-weight: 600px;
+    padding:12px 50px 12px 50px;
+    user-select:none;
     cursor: pointer;
     position: relative;
-}
 
-ul li::before {
-    content: ' ';
+}
+ul li::before{
+    content: '';
     position: absolute;
     height: 28px;
     width: 28px;
-    background-image: url("../05-To-do-list-app/images/uncheck.jpeg");
-    background-position: center;
-    background-size: cover;
-    top: 12px;
-    left: 10px;
-}
-
-ul li.checked {
-    color: hsla(252, 83%, 38%, 0.918);
-    text-decoration: line-through red 3px;
-    font-size: 25px;
-    font-weight: 800;
-}
-
-ul li.checked::before {
-    background-image: url("../05-To-do-list-app/images/checked.jpeg");
-}
-
-ul li span {
-    position: absolute;
-    top: 5px;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    font-size: 45px;
-    line-height: 30px;
-    color: rgb(16, 14, 14);
-    text-align: center;
     border-radius: 50%;
+    background-image:url("../images/uncheck.jpeg");
+    background-position:center;
+    background-size:cover;
+    top:12px;
+    left:0px;
+    right:50px;
+}  
+ul li.checked{
+    color:hsla(252, 83%, 38%, 0.918);
+    text-decoration: line-through red 3px;
+    font-size:25px;
+    font-weight:300;
+
 }
+ul li.checked::before{
+    background-image: url("../images/checked.jpeg");
 
-ul li span:hover {
-    background: rgb(206, 30, 30);
-}
-
-
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
+ }
+ ul li span:hover{
+    background: grey;
+ }
+ ul li {
+    padding: 10px;
+  }
+  /* Mobile responsive styles*/
+  @media (max-width: 576px) {
     .to-do-app {
-        margin: 10px;
-        padding: 20px;
+      max-width: 100%;
     }
-
-    .to-do-app h2 {
-        font-size: 40px;
-    }
-
+  
     .row {
-        flex-direction: column;
-        align-items: center;
+      flex-direction: column;
+      align-items: center;
     }
-
-    #input-box {
-        width: 100%;
+  
+    #input-box,
+    .btn-success {
+      width: 100%;
     }
-
+  
     ul li {
-        padding: 10px;
-        font-size: 20px;
+      padding: 10px;
     }
-
-    ul li::before {
-        height: 20px;
-        width: 20px;
-        top: 6px;
-        left: 5px;
-    }
-
+  
     ul li span {
-        top: 2px;
-        right: 5px;
-        width: 30px;
-        height: 30px;
-        font-size: 25px;
-        line-height: 25px;
+      font-size: 30px;
+      width: 30px;
+      height: 30px;
+      line-height: 20px;
+    }
+  }
+  
+  /* Tablet responsive styles */
+  @media (min-width: 576px) and (max-width: 768px) {
+    .to-do-app {
+      max-width: 500px;
+    }
+  
+    ul li {
+      padding: 12px 30px;
+    }
+  
+    ul li span{
+      font-size: 35px;
+      width: 35px;
+      height: 35px;
+      line-height: 25px;
     }
 }

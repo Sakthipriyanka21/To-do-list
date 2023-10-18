@@ -45,3 +45,44 @@ window.addEventListener('load', function() {
   });
   
 showTask();
+
+
+// const form = document.getElementById("form");
+// const nameField = document.getElementById("nameField");
+// const email= document.getElementById("email");
+// const password=document.getElementById("password");
+// const cpassword=document.getElementById("cpassword");
+// let signupBtn = document.getElementById("signupBtn");
+// let loginBtn = document.getElementById("loginBtn");
+// let title = document.getElementById("title");
+
+// loginBtn.onclick = function() {
+//     nameField.style.maxHeight = "0";
+//     cpassword.style.maxHeight = "0";
+//     title.innerHTML = "Log in";
+//     signupBtn.classList.add("disable");
+//     loginBtn.classList.remove("disable");
+// }
+
+// signupBtn.onclick = function() {
+//     nameField.style.maxHeight = "65px";
+//     cpassword.style.maxHeight = "65px";
+//     title.innerHTML = "Sign Up";
+//     signupBtn.classList.remove("disable");
+//     loginBtn.classList.add("disable");
+// }
+// form.addEventListener('submit',(e)=>{
+//     e.preventDefault();
+//     validateInputs();
+// })
+
+// function validateInputs(){
+//     const nameFieldVal = nameField.Value.trim();
+//     const emailVal = email.value.trim();
+//     const passwordVal = password.value.trim();
+//     const cpassword = cpassword.value.trim(); 
+
+// }
+
+
+
