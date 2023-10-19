@@ -1,88 +1,105 @@
-const inputBox = document.getElementById("input-box");
-const listContainer = document.getElementById("list-Container");
+const form = document.getElementById("form");
+const nameField = document.getElementById("nameField");
+console.log(nameField)
+const email= document.getElementById("email");
+const password=document.getElementById("password");
+const cpassword=document.getElementById("cpassword");
+let signupBtn = document.getElementById("signupBtn");
+let loginBtn = document.getElementById("loginBtn");
+let title = document.getElementById("title");
+console.log(nameField);
 
-function addTask(){
-    if(inputBox.value === ''){
-    alert("write some new task");
-    }
-    else{
-        let li = document.createElement("li");
-        li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
-        let span = document.createElement("span");
-        span.innerHTML="\u00d7";
-        li.appendChild(span);
+loginBtn.onclick = function() {
 
-    }
-    inputBox.value= "";
-    saveData();
+    console.log("login button is clicked");
+    nameField.style.maxHeight = "0";
+    cpassword.style.maxHeight = "0";
+    title.innerHTML = "Log in";
+    signupBtn.classList.add("disable");
+    loginBtn.classList.remove("disable");
 }
 
-listContainer.addEventListener("click", function(e)
-{
-    if(e.target.tagName === "LI"){
-        e.target.classList.toggle("checked");
-        saveData();
-    }
-    else if(e.target.tagName === "SPAN"){
-        e.target.parentElement.remove();
-        saveData();
-    }
-},false);
-
-function saveData(){
-    localStorage.setItem("data", listContainer.innerHTML);
-
+signupBtn.onclick = function() {
+    nameField.style.maxHeight = "65px";
+    cpassword.style.maxHeight = "65px";
+    title.innerHTML = "Sign Up";
+    signupBtn.classList.remove("disable");
+    loginBtn.classList.add("disable");
 }
 
-function showTask(){
-    listContainer.innerHTML = localStorage.getItem("data");
-}
-// script.js
-window.addEventListener('load', function() {
-    const transitionImage = document.getElementById('transitionImage');
-    transitionImage.classList.add('animate');
+String.prototype.isEmail = function () {
+  return !!this.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
+};
+
+String.prototype.isAlpha = function () {
+  return !!this.match(/^[a-zA-Z]*$/);
+};
+
+function checkRequired(inputs) {
+  inputs.forEach((input) => {
+    if (input.value.trim() === " ") {
+      //Error
+      errorInput(input, `${getName(input)} is Required`);
+    } else {
+      //Success
+      successInput(input);
+    }
   });
-  
-showTask();
+}
+function getName(input) {
+  //return input.id;
+  return input.getAttribute("data-name");
+}
+function errorInput(input, message) {
+    const inputfield = input.parentElement;
+    inputfield.classList.add("error"); // Use classList.add to add the "error" class
+    const p = inputfield.querySelector("p");
+    p.innerHTML = message;
+  }
+  function successInput(input) {
+    const inputfield = input.parentElement;
+    inputfield.classList.remove("error"); // Remove the "error" class
+    inputfield.classList.add("success"); // Add the "success" class
+    const p = inputfield.querySelector("p");
+    p.innerHTML = ""; // Clear the error message
+}
 
 
-// const form = document.getElementById("form");
-// const nameField = document.getElementById("nameField");
-// const email= document.getElementById("email");
-// const password=document.getElementById("password");
-// const cpassword=document.getElementById("cpassword");
-// let signupBtn = document.getElementById("signupBtn");
-// let loginBtn = document.getElementById("loginBtn");
-// let title = document.getElementById("title");
+function checkLength(input, min, max) {
+  const data = input.value.trim().length;
+  if (data < min) {
+    errorInput(input, `${getName(input)} must be aleast greater than ${min} characters`);
+  } else if (data > max) {
+    errorInput(input, `${getName(input)} must be aleast lesser than ${max} characters`);
+  } else {
+    successInput(input);
+  }
+}
 
-// loginBtn.onclick = function() {
-//     nameField.style.maxHeight = "0";
-//     cpassword.style.maxHeight = "0";
-//     title.innerHTML = "Log in";
-//     signupBtn.classList.add("disable");
-//     loginBtn.classList.remove("disable");
-// }
+function checkConfirmPassword(password, cpassword) {
+  if (password.value != cpassword.value) {
+    errorInput(cpassword, `${getName(cpassword)}  does not match`);
+    console.log(errorInput);
+}
+}
 
-// signupBtn.onclick = function() {
-//     nameField.style.maxHeight = "65px";
-//     cpassword.style.maxHeight = "65px";
-//     title.innerHTML = "Sign Up";
-//     signupBtn.classList.remove("disable");
-//     loginBtn.classList.add("disable");
-// }
-// form.addEventListener('submit',(e)=>{
-//     e.preventDefault();
-//     validateInputs();
-// })
+function checkEmail(input) {
+  if (!input.value.trim().isEmail()) {
+    errorInput(input, `This is not an valid email address`);
+  }
+}
+function checkAlpha(input) {
+  if (!input.value.trim().isAlpha()) {
+    errorInput(input, `${getName(input)}  Must be Alphabets`);
+  }
+}
 
-// function validateInputs(){
-//     const nameFieldVal = nameField.Value.trim();
-//     const emailVal = email.value.trim();
-//     const passwordVal = password.value.trim();
-//     const cpassword = cpassword.value.trim(); 
-
-// }
-
-
-
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  checkRequired([nameField, email, password, cpassword]);
+  checkLength(nameField, 5, 10);
+  checkLength(password, 5, 10);
+  checkConfirmPassword(password, cpassword);
+  checkEmail(email);
+  checkAlpha(nameField);
+});

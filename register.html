@@ -6,131 +6,151 @@
     <title>To-do-list app</title>
     <style> 
         *{
-            margin:0;
-            padding:0;
-            font-family: 'Poppins', sans-serif;
-            box-sizing:border-box;
-        }
-        
-        .container{
-            width:100%;
-            height: 100vh;
-            background: rgb(2,0,36);
-            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(35,162,152,0.7595413165266106) 45%, rgba(0,212,255,1) 100%);
-        }
-        .form-box{
-            width:80%;
-            max-width:450px;
-            position: absolute;
-            top:50%;
-            left:50%; 
-            transform: translate(-50%,-50%);
-            background: white;
-            padding:50px 60px 70px; 
-            text-align: center;
-        
-        }
-        .form-box h1{
-            font-size: :30px;
-            margin-bottom: 60px;
-            color:blue;
-            position:relative;
-        }
-        .form-box h1::after{
-            content:"";
-            width: 50px;
-            height:4px;
-            border-radius: 3px;
-            background:blue;
-            position:absolute;    
-            bottom:-12px;
-            left:50%;
-            transform: translateX(-50%);
-        }
-        .input-field{
-            background: rgb(233, 223, 223);
-            margin:15px 0;
-            border-radius: 5px;
-            align-items:center;
-            display:flex;
-            height:45px;
-            max-height:65px;
-            transition: max-height 0.5s;
-            overflow: hidden;
-            
-        }
-        input{
-            width: 100%;
-            background: transparent;
-            border:0;
-            outline:0;
-            padding: 18px,15px;
-        }
-        .input-field i{
-            margin-left:15px;
-            padding:5px;
-            color: black;
-             
-        }
-        .btn-field{
-            width:100%;
-            justify-content: space-between;
-            display: flex;
-        
-        }
-        .btn-field button{
-            flex-basis:45%;
-            background-color: blue;
-            color:white;
-            height:40px;
-            width:40px;
-            margin-top: 30px;
-            border-radius:20px;
-            outline: 0;
-            border: 0;
-            transition: 1s;
-            cursor:pointer;
-        
-        }
-        .input-group{
-            height:250px;
-        }
-        .btn-field button.disable{
-            background:rgb(219, 213, 213);
-            color:black;
-        } 
-        
-        
-    </style>
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing:border-box;
+}
+
+.container{
+    width:100%;
+    height: 100vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(35,162,152,0.7595413165266106) 45%, rgba(0,212,255,1) 100%);
+}
+.form-box{
+    width:80%;
+    max-width:450px;
+    position: absolute;
+    top:50%;
+    left:50%; 
+    transform: translate(-50%,-50%);
+    background: white;
+    padding:50px 60px 70px; 
+    text-align: center;
+
+}
+.form-box h1{
+    font-size: :30px;
+    margin-bottom: 60px;
+    color:blue;
+    position:relative;
+}
+.form-box h1::after{
+    content:"";
+    width: 50px;
+    height:4px;
+    border-radius: 3px;
+    background:blue;
+    position:absolute;    
+    bottom:-12px;
+    left:50%;
+    transform: translateX(-50%);
+}
+.input-field{
+    background: rgb(233, 223, 223);
+    margin:15px 0;
+    border-radius: 5px;
+    align-items:center;
+    display:flex;
+    height:45px;
+    max-height:65px;
+    transition: max-height 0.5s;
+    overflow: hidden;
+    
+}
+.input-field.error p,.input-field.success p {
+    font-size: 11px;
+    margin-top: 5px;
+    visibility: hidden;
+  }
+  .input-field.error p {
+    color: #f53b57;
+    visibility: visible;
+  }
+  
+  .input-field.error input {
+    background-color: #f53b57;
+  }
+  
+  .input-field.success input {
+    border-color: #05c46b;
+  }
+input{
+    width: 100%;
+    background:transparent; 
+    border:5px;
+    outline:0;
+    padding: 18px,15px;
+}
+.input-field i{
+    margin-left:15px;
+    padding:5px;
+    color: black;
+     
+}
+.btn-field{
+    width:100%;
+    justify-content: space-between;
+    display: flex;
+
+}
+.btn-field button{
+    flex-basis:45%;
+    background-color: blue;
+    color:white;
+    height:40px;
+    width:40px;
+    margin-top: 30px;
+    border-radius:20px;
+    outline: 0;
+    border: 0;
+    transition: 1s;
+    cursor:pointer;
+
+}
+.input-group{
+    height:250px;
+}
+.btn-field button.disable{
+    background:rgb(219, 213, 213);
+    color:black;
+} 
+
+
+</style>
     <script src="https://kit.fontawesome.com/fd64637038.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <div class="form-box">
             <h1 id="title">Sign Up</h1>
-            <form>
+            <form id="form" action="#" class="forma">
+        
                 <div class="input-group">
                     <div class="input-field" id="nameField" required>
                         <i class="fa-solid fa-user"></i>
                         <input type="text" placeholder="Enter your Fullname ">
-                        <div class="error"></div>
+                        <p></p>
                     </div>
 
                     <div class="input-field" id="email" required>
                         <i class="fa-solid fa-envelope"></i>
                         <input type="email" placeholder="E-mail">
-                        <div class="error"></div>
+                        <div>
+                        <p></p>
+                        </div>
                     </div>
                       
                     <div class="input-field" required>
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" id="password" placeholder="Password">
-                        <div class="error"></div>
+                        <p></p>
                     </div>
                     <div class="input-field" id="cpassword" required>
                         <i class="fa-solid fa-lock"></i>
                         <input type="password"  placeholder="Re-Enter Password">
-                        <div class="error"></div>
+                        <p></p>
                     </div>
                     <p>Forget Password?<a href='#'>Click here</a></p>
                 </div>

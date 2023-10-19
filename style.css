@@ -9,13 +9,17 @@
     justify-content: flex-end;
     align-items: flex-start;
     height:100vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(35,162,152,0.7595413165266106) 45%, rgba(0,212,255,1) 100%);
   }
   .login{
     justify-content: center;
     align-items: center;
     margin-right:50px;
-    border-radius: 50%;
-    background-color: blue;
+    border-radius: 60%;
+    background-color: rgb(23, 245, 245);
+    font:20px;
+    color:red;
     
   }
   
